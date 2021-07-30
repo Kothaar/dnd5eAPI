@@ -13,5 +13,13 @@ router.post('/', (req, res, next) => {
     })
 });
 
+router.get('/:itemID', (req, res, next) => {
+    const id = req.params.itemID;
+    res.status(200).json({ 
+        message : 'Requested Item',
+        id : id
+    })
+});
+
 
 module.exports = router;
