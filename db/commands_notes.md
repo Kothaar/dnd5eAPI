@@ -12,3 +12,8 @@ docker exec -it dndb bash
 
 
 HOST PORT binded to MYSQL 3306 PORT: 57000
+
+import database schema:
+mysql -u [db_username] -p [database_name] < file.sql
+
+empty database_name will have to be created before importing
