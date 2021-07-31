@@ -1,8 +1,17 @@
 const express = require('express');
 const app = express();
+const router = require('./routes/createRouter')()
 
-const itemRoutes = require('./api/routes/items');
+app
+.use('/api', router)
+.use((error, req,res, next) => {
+    res.status(error.status || 500).json({error})
+})
 
-app.use('/items', itemRoutes);
+//const itemRoutes = require('./api/routes/items');
+//app.use('/items', itemRoutes);
+
+//const wepRoutes = require('./api/routes/weapons');
+//app.use('/weapons', wepRoutes);
 
 module.exports = app;
