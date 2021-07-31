@@ -2,7 +2,7 @@ const db = require('../../../db/index');
 const express = require('express');
 const router = express.Router();
 
-router.get('/weapons', async (req, res, next) => {
+router.get('/v1/weapons', async (req, res, next) => {
     try {
         let results = await db.all();
         res.json(results);
@@ -12,13 +12,13 @@ router.get('/weapons', async (req, res, next) => {
     }
 });
 
-router.post('/weapons', (req, res, next) => {
+router.post('/v1/weapons', (req, res, next) => {
     res.status(200).json({ 
         message: 'post req to /products'
     })
 });
 
-router.get('/weapons/:id', async (req, res, next) => {
+router.get('/v1/weapons/:id', async (req, res, next) => {
     try {
         let results = await db.one(req.params.id);
         res.json(results);
@@ -27,7 +27,7 @@ router.get('/weapons/:id', async (req, res, next) => {
         res.sendStatus(500);
     }
 });
-router.get('/weapons/n/:name', async (req, res, next) => {
+router.get('/v1/weapons/n/:name', async (req, res, next) => {
     try {
         let results = await db.name(req.params.name);
         res.json(results);
